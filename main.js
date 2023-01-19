@@ -1,4 +1,4 @@
-let listIcons = ["🦢","🐘","🦎","🦋","🐪","🐳","🐠","🐌"] //All Icons to match
+let listIcons = ["🦢","🐘","🦎","🦋","🐕","🐳","🐠","🦨","🐣","🦥"] //All Icons to match
 const reflexionTime = 500 //ms
 
 console.log("List of pairs to match :")
@@ -6,15 +6,14 @@ listIcons.forEach(element => {
     console.log(element)
 });
 
-listIcons = [].concat(listIcons,listIcons) //duplication of the array of icons to make pairs
+listIcons = [].concat(listIcons,listIcons) //duplication of listIcons to make pairs
 listIcons = listIcons.sort((a,b) => 0.5 - Math.random()) //random sort of listIcon
 
-let oneCardAlreadySelected = false //to notify us if a card is already selected
-let firstCardSelected = null       //to save the value of the first card selected so we can modify its properties later
-let nRightMove = 0                 
+let alreadySelectedCard = false //informs us if a card is already selected
+let firstSelectedCard = null       //saves the object of the first card selected so we can modify its properties later
+let nRightMoves = 0                 
 
-
-let nMove = document.querySelector(".nMove")
+let nMoves = document.querySelector(".n-moves")
 let allCards = document.querySelectorAll(".card")
 allCards.forEach((cardSelected,index) => 
 {
@@ -27,46 +26,47 @@ allCards.forEach((cardSelected,index) =>
             cardSelected.innerHTML = listIcons[index] 
             event.target.style.backgroundColor = "rgb(207, 66, 23)"
 
-            if(oneCardAlreadySelected == false)
+            if(alreadySelectedCard == false)
             {
-                firstCardSelected = cardSelected
-                oneCardAlreadySelected = true
+                firstSelectedCard = cardSelected
+                alreadySelectedCard = true
             }
             else
             {                
-                nMove.innerHTML++
-                if(cardSelected.innerHTML != firstCardSelected.innerHTML) //if icons don't match
+                nMoves.innerHTML++
+                if(cardSelected.innerHTML != firstSelectedCard.innerHTML) //if icons don't match
                 {
-                    setTimeout(() => {
-                        event.target.style.transform = firstCardSelected.style.transform = "rotateY(0deg)" //flip back to initial position 
+                    setTimeout(() => 
+                    {
+                        event.target.style.transform = firstSelectedCard.style.transform = "rotateY(0deg)" //flips back to initial position 
                         setTimeout((function(){                      
-                            event.target.style.backgroundColor = firstCardSelected.style.backgroundColor = "rgb(145, 48, 18)"
-                            cardSelected.innerHTML = firstCardSelected.innerHTML = ""             
-                        }),100)  
+                            event.target.style.backgroundColor = firstSelectedCard.style.backgroundColor = "rgb(145, 48, 18)" //back to initial color
+                            cardSelected.innerHTML = firstSelectedCard.innerHTML = "" //"hides" the icon          
+                        }),100) //flip animation time
                     }, reflexionTime);           
                 }
-                else
+                else //if icons match
                 {
-                    nRightMove = nRightMove + 1
-                    if(nRightMove == listIcons.length/2)
+                    nRightMoves = nRightMoves + 1
+                    if(nRightMoves == listIcons.length/2)
                     {
-                    setTimeout((function(){
-                        var input = prompt("Félicitaion, vous avez gagné en " + nMove.innerHTML + " coups 🎉🥳 \nEntrez votre nom pour sauvegarder votre score")
-                        if(input === null || input === ""){
-                            return
-                        } 
-                        else{
-                            window.location.href = `scores.php?name=${input}&nMoves=${nMove.innerHTML}`
-                        }          
-                    }),reflexionTime)
+                        setTimeout((function()
+                        {
+                            var player = prompt("Félicitaion ! Vous avez remporté la partie 🥳🎉 \nScore : " + nMoves.innerHTML + " coups \nEntrez votre nom pour sauvegarder votre score :")
+
+                            if(player === null || player === ""){ //if the player clicks on cancel or don't types anything
+                                window.location.href = "highscore.php" //goes to score page without save his score
+                            } 
+                            else{
+                                var encryptedPlayer = btoa(player)
+                                var encryptedScore = btoa(nMoves.innerHTML)
+                                window.location.replace(`highscore.php?player=${encryptedPlayer}&score=${encryptedScore} `)
+                            }          
+                        }),reflexionTime)
                     }                                
                 }
-                oneCardAlreadySelected = false
-                
+                alreadySelectedCard = false               
             } 
-        }),200) 
-                  
+        }),200) //flip animation time                  
     })
 })
-
- 
