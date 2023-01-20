@@ -21,26 +21,23 @@
     // if(json_last_error() != JSON_ERROR_NONE){
     //     echo "Erreur lors du décodage des données JSON: " . json_last_error_msg();
     // }
-
-
-    
- //EM206
-    
+   
+ //EM206 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scores</title>
-    <link rel="stylesheet" href="scores.css">
+    <link rel="stylesheet" href="style/highscore.css">
 </head>
 <body>
     <h1>Meilleurs Scores</h1>
     <?php
 
-        $selectReq = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from scores ORDER BY score ASC limit 11";
+        $selectReq = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from scores ORDER BY score ASC limit 10";
         $res = mysqli_query($id,$selectReq);
         $i = 1 ;
         
@@ -70,7 +67,20 @@
             $i = $i + 1 ;           
         }
         echo("  </tbody>
-            </table>");
-    ?>  
+            </table>"
+        );
+
+        if(!empty($_GET["player"]) and !empty($_GET["score"]))
+        {
+            echo
+            ("
+                <div class='button' onclick=\"window.location.href='game.html'\">Nouvelle Partie</div>
+                <div class='button' onclick=\"window.location.href='index.html'\">Menu Principal</div>
+            ");
+        }
+        
+    ?>
+    
+    
 </body>
 </html>

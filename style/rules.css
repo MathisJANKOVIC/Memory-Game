@@ -1,0 +1,32 @@
+html
+{
+    height: 100%;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+body
+{
+    text-align: center;
+    background:linear-gradient(to left,rgb(203, 23, 23),rgb(1, 44, 135));
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;   
+}
+h1{   
+    color: rgb(0, 8, 63);
+    text-shadow: 2px 2px 5px rgb(183, 8, 8);
+}
+
+body .container
+{
+    margin-top: 100px;
+}
+
+body .container p
+{
+    color: rgb(0, 8, 63);
+    width: 69%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}

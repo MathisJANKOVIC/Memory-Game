@@ -1,13 +1,23 @@
 body
 {
-    background-color: rgb(43, 98, 226);
+    background: linear-gradient(to left, rgb(26, 101, 187),#1d3c8a);
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;   
 }
-
-body h1{
-    margin-bottom: 18px;
+html
+{
+    font-size: 25px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    height: 100vh;
 }
+h1{
+    margin-bottom: 1px; 
+    text-shadow: 2px 2px 5px rgb(145, 48, 18);
+    color: rgb(0, 8, 63);
+}
+
 body .n-move-section
 {
     display: flex;
@@ -15,28 +25,31 @@ body .n-move-section
 }
 body .n-move-section p
 {
-    font-size: 22px; 
-    margin-bottom: 18px;
-    margin-top: 5px;
+    
+    color: rgb(0, 8, 63);
+    font-size: 30px; 
+    /* margin-bottom: 18px;
+    margin-top: 5px; */
 }
 
-body .line-section
+body .line-container
 {
     display: flex;
     justify-content:center;
 }
 
-body .line-section .card
+body .line-container .card
 {   
     display: flex;
     background-color: rgb(145, 48, 18);
 
-    margin-left: 15px;
+    margin: 9px 15px;
+    /* margin-left: 15px;
     margin-right: 15px;   
-    margin-bottom: 18px;
+    margin-bottom: 18px; */
     
-    width: 150px;
-    height: 150px;
+    width: 190px;
+    height: 190px;
 
     border-style: solid;
     border-color:black;
@@ -44,7 +57,7 @@ body .line-section .card
     border-radius: 10px;
 
     /*icons style*/
-    font-size: 80px; 
+    font-size: 105px; 
     justify-content: center;
     align-items: center;
     
@@ -52,11 +65,12 @@ body .line-section .card
     transition: transform 0.5s;
     transform-style: preserve-3d;
     position: relative;   
+    cursor: pointer;
 }
 
-body .line-section .card:hover
+body .line-container .card:hover
 {
     background-color:rgb(223, 97, 66);
-    cursor: pointer;
+    
 }
 

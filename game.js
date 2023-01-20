@@ -20,7 +20,6 @@ allCards.forEach((cardSelected,index) =>
     cardSelected.addEventListener("click",(event) => 
     {
         event.target.style.transform = "rotateY(180deg)" //flips the card selected    
-        
         setTimeout((function(){
             //gives to the card an icon and another color  
             cardSelected.innerHTML = listIcons[index] 
@@ -58,7 +57,7 @@ allCards.forEach((cardSelected,index) =>
                                 window.location.href = "highscore.php" //goes to score page without save his score
                             } 
                             else{
-                                var encryptedPlayer = btoa(player)
+                                var encryptedPlayer = btoa(player.charAt(0).toUpperCase() + player.slice(1))
                                 var encryptedScore = btoa(nMoves.innerHTML)
                                 window.location.replace(`highscore.php?player=${encryptedPlayer}&score=${encryptedScore} `)
                             }          
