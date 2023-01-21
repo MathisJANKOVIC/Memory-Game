@@ -3,7 +3,7 @@
     if (mysqli_connect_errno()){
         die('Erreur de connexion a la BDD') ;
     }
-
+    
     if(isset($_GET["player"]) and isset($_GET["score"]))
     {
         // Récupération de la variable cryptée
@@ -13,9 +13,11 @@
         // Décryptage de la variable
         $player = base64_decode($encryptedPlayer);
         $n_moves = base64_decode($encryptedScore);
-
-        $insertReq = "INSERT INTO scores(player,score) VALUES('$player',$n_moves)";
-        $res = mysqli_query($id,$insertReq) ;
+        if($player != NULL and $player != "")
+        {
+            $insertReq = "INSERT INTO scores(player,score) VALUES('$player',$n_moves)";
+            $res = mysqli_query($id,$insertReq) ;
+        }   
     }
     // $data = json_decode(file_get_contents('php://input'), true);
     // if(json_last_error() != JSON_ERROR_NONE){
@@ -30,7 +32,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scores</title>
+    <title>Scores | Matching Game</title>
     <link rel="stylesheet" href="style/highscore.css">
 </head>
 <body>
@@ -70,7 +72,7 @@
             </table>"
         );
 
-        if(!empty($_GET["player"]) and !empty($_GET["score"]))
+        if(isset($_GET["player"]) and isset($_GET["score"]))
         {
             echo
             ("

@@ -47,20 +47,21 @@ allCards.forEach((cardSelected,index) =>
                 else //if icons match
                 {
                     nRightMoves = nRightMoves + 1
-                    if(nRightMoves == listIcons.length/2)
+                    if(nRightMoves == 1)
                     {
                         setTimeout((function()
                         {
                             var player = prompt("Félicitaion ! Vous avez remporté la partie 🥳🎉 \nScore : " + nMoves.innerHTML + " coups \nEntrez votre nom pour sauvegarder votre score :")
 
-                            if(player === null || player === ""){ //if the player clicks on cancel or don't types anything
-                                window.location.href = "highscore.php" //goes to score page without save his score
-                            } 
-                            else{
+                            if(player != null)     
+                            {
                                 var encryptedPlayer = btoa(player.charAt(0).toUpperCase() + player.slice(1))
                                 var encryptedScore = btoa(nMoves.innerHTML)
                                 window.location.replace(`highscore.php?player=${encryptedPlayer}&score=${encryptedScore} `)
-                            }          
+                            }
+                            else{
+                                window.location.replace(`index.html`)
+                            }
                         }),reflexionTime)
                     }                                
                 }
