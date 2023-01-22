@@ -1,30 +1,26 @@
 <?php
-    $id = mysqli_connect("localhost:3306","root","","scores (memory game)") ;
+
+    $id = mysqli_connect("localhost:3306","root","","matching_game") ; //connexion infos
+    
     if (mysqli_connect_errno()){
-        die('Erreur de connexion a la BDD') ;
+        die('⚠ Error DB connexion') ;
     }
     
-    if(isset($_GET["player"]) and isset($_GET["score"]))
+    if(isset($_GET["player"]) and isset($_GET["score"])) //if user entered authorised characters for his name on last page
     {
-        // Récupération de la variable cryptée
-        $encryptedPlayer = $_GET['player'];
-        $encryptedScore = $_GET['score'];
+        //get encrypted data
+        $encrypted_player = $_GET['player'];
+        $encrypted_score = $_GET['score'];
         
-        // Décryptage de la variable
-        $player = base64_decode($encryptedPlayer);
-        $n_moves = base64_decode($encryptedScore);
-        if($player != NULL and $player != "")
-        {
-            $insertReq = "INSERT INTO scores(player,score) VALUES('$player',$n_moves)";
-            $res = mysqli_query($id,$insertReq) ;
-        }   
+        //data decryption
+        $player = base64_decode($encrypted_player);
+        $score = base64_decode($encrypted_score);
+        
+        //check if using get method
+        $insert_query = "INSERT INTO scores(player,score) VALUES('$player',$score)";
+        mysqli_query($id,$insert_query);         
     }
-    // $data = json_decode(file_get_contents('php://input'), true);
-    // if(json_last_error() != JSON_ERROR_NONE){
-    //     echo "Erreur lors du décodage des données JSON: " . json_last_error_msg();
-    // }
-   
- //EM206 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,10 +34,9 @@
 <body>
     <h1>Meilleurs Scores</h1>
     <?php
-
-        $selectReq = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from scores ORDER BY score ASC limit 10";
-        $res = mysqli_query($id,$selectReq);
-        $i = 1 ;
+        $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from scores ORDER BY score ASC limit 10" ;
+        $result = mysqli_query($id,$select_query) ;
+        $i = 1 ; //to print the rang of the player based on his score
         
         echo("
             <table>
@@ -55,15 +50,15 @@
                 </thead> 
                 <tbody>              
         ");
-        while($scores = mysqli_fetch_assoc($res))
+        while($matching_game = mysqli_fetch_assoc($result))
         {   
             echo
             ("                                                  
                     <tr>        
                         <td>$i</td>
-                        <td>".$scores["player"]."</td>
-                        <td>".$scores["score"]."</td>
-                        <td>".$scores["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]." </td>
+                        <td>".$matching_game["player"]."</td>
+                        <td>".$matching_game["score"]."</td>
+                        <td>".$matching_game["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]." </td>
                     </tr>                               
             ");                      
             $i = $i + 1 ;           
@@ -72,7 +67,7 @@
             </table>"
         );
 
-        if(isset($_GET["player"]) and isset($_GET["score"]))
+        if(isset($_GET["player"])) //if the user clicked on "cancel" button or entered authorised characters on last page
         {
             echo
             ("
@@ -82,7 +77,5 @@
         }
         
     ?>
-    
-    
 </body>
 </html>

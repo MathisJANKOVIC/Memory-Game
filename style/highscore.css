@@ -6,10 +6,7 @@ html
     place-items: center;
     height: 100vh;
 }
-h1
-{
-    text-shadow: 4px 2px 5px rgb(183, 8, 8);
-}
+
 body
 {
     background: linear-gradient(to left,rgb(203, 23, 23),rgb(1, 44, 135));
@@ -17,6 +14,10 @@ body
     font-size: 35px;
     text-align: center;
     color: rgb(0, 7, 51);
+}
+
+body h1{
+    text-shadow: 4px 2px 5px rgb(183, 8, 8);
 }
 
 body table
@@ -28,15 +29,17 @@ body table
     width: auto;  
     margin-bottom: 80px; 
 }
-body th{
+
+body thead tr th{
     padding: 20px;
 }
-body td{
+
+body tbody tr td{
     padding: 6px;
 }
+
 body .button
 {
-    
     cursor: pointer;
     width: 45%;
     margin-bottom: 30px;
