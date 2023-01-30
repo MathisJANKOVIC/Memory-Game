@@ -1,4 +1,4 @@
-import {getCookie} from "./cookies_functions";
+import {getCookie} from "./cookies_functions.js";
 let listType = getCookie("iconType")
 let listTypeName
 

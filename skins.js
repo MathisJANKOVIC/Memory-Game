@@ -1,4 +1,4 @@
-import {getCookie,setCookie} from "./cookies_functions";
+import {getCookie,setCookie} from "./cookies_functions.js";
 
 var cookieValue = getCookie("iconType");
 if (cookieValue) {
