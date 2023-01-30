@@ -1,9 +1,28 @@
-let listIcons = ["🦢","🐘","🦎","🦋","🐕","🐳","🐠","🦨","🐣","🦥"] //All Icons to match (⚠ must be 2 times less than number of "card" divs in HTML)
+import {getCookie} from "./cookies_functions";
+let listType = getCookie("iconType")
+let listTypeName
+
+if(listType !== null){
+    listTypeName = "list" + listType.charAt(0).toUpperCase() + listType.slice(1)
+}
+else{
+    listTypeName = "list" + "Shapes"
+}
+
+async function initImport() 
+{
+    let iconsModule = await import(`./icons.js`)
+    let listIcons = Object.values(iconsModule)[Object.keys(iconsModule).indexOf(listTypeName)];
+    console.log(listIcons)
+    return listIcons
+}
+let listIcons = await initImport();
+console.log(listIcons)
 const defaultColor = "rgb(145, 48, 18)" //color of hidden card (from CSS)
 const shownColor = "rgb(207, 66, 23)"  //color it changes to when card is shown
 const reflexionTime = 500 //ms        //time to let to the player to see what he discovered
 
-console.log("List of pairs to match :")
+console.log("List of pairs to match : ")
 listIcons.forEach(element => {
     console.log(element)
 });

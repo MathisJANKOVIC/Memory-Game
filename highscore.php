@@ -17,7 +17,7 @@
         $score = base64_decode($encrypted_score);
         
         //check if using get method
-        $insert_query = "INSERT INTO scores(player,score) VALUES('$player',$score)";
+        $insert_query = "INSERT INTO highscore(player,score) VALUES('$player',$score)";
         mysqli_query($id,$insert_query);         
     }
 
@@ -34,7 +34,7 @@
 <body>
     <h1>Meilleurs Scores</h1>
     <?php
-        $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from scores ORDER BY score ASC limit 10" ;
+        $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from highscore ORDER BY score ASC limit 10" ;
         $result = mysqli_query($id,$select_query) ;
         $i = 1 ; //to print the rang of the player based on his score
         
@@ -50,15 +50,15 @@
                 </thead> 
                 <tbody>              
         ");
-        while($matching_game = mysqli_fetch_assoc($result))
+        while($highscore = mysqli_fetch_assoc($result))
         {   
             echo
             ("                                                  
                     <tr>        
                         <td>$i</td>
-                        <td>".$matching_game["player"]."</td>
-                        <td>".$matching_game["score"]."</td>
-                        <td>".$matching_game["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]." </td>
+                        <td>".$highscore["player"]."</td>
+                        <td>".$highscore["score"]."</td>
+                        <td>".$highscore["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]." </td>
                     </tr>                               
             ");                      
             $i = $i + 1 ;           
@@ -74,8 +74,7 @@
                 <div class='button' onclick=\"window.location.href='game.html'\">Nouvelle Partie</div>
                 <div class='button' onclick=\"window.location.href='index.html'\">Menu Principal</div>
             ");
-        }
-        
+        }        
     ?>
 </body>
 </html>

@@ -28,6 +28,8 @@ body table
     min-width: 1000px;
     width: auto;  
     margin-bottom: 80px; 
+    /* border: solid 2px white;    
+    border-radius: 30px; */
 }
 
 body thead tr th{
