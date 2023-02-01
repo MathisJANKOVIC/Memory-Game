@@ -1,31 +1,33 @@
-import {getCookie} from "./cookies_functions.js";
-let listType = getCookie("iconType")
-let listTypeName
+import {getCookie} from "./cookies_functions.js"
 
-if(listType !== null){
-    listTypeName = "list" + listType.charAt(0).toUpperCase() + listType.slice(1)
-}
-else{
-    listTypeName = "list" + "Shapes"
-}
-
-async function initImport() 
-{
-    let iconsModule = await import(`./icons.js`)
-    let listIcons = Object.values(iconsModule)[Object.keys(iconsModule).indexOf(listTypeName)];
-    console.log(listIcons)
-    return listIcons
-}
-let listIcons = await initImport();
-console.log(listIcons)
 const defaultColor = "rgb(145, 48, 18)" //color of hidden card (from CSS)
 const shownColor = "rgb(207, 66, 23)"  //color it changes to when card is shown
 const reflexionTime = 500 //ms        //time to let to the player to see what he discovered
 
+async function initImport() //use of async function and "await" to await the program to load data before executing the rest of code
+{
+    var iconsModule = await import(`./icons.js`) //imports the module with all skins
+    var listIcons = Object.values(iconsModule)[Object.keys(iconsModule).indexOf(iconTheme)] //loads the variable with has iconTheme as name in iconsModule
+    
+    if(listIcons){
+        return listIcons      
+    } 
+    else{
+        alert("Error : failed to load icons for cards")
+        throw new Error("failed to load icons for cards")
+    }  
+}
+
+let iconTheme = getCookie("icon-theme")
+if(iconTheme === null){ //if the cookie doesn't exist
+    iconTheme = "shapes"
+}
+let listIcons = await initImport()
+
 console.log("List of pairs to match : ")
 listIcons.forEach(element => {
     console.log(element)
-});
+})
 
 listIcons = [].concat(listIcons,listIcons) //duplication of listIcons to make pairs
 listIcons = listIcons.sort((a,b) => 0.5 - Math.random()) //random sort of listIcon
@@ -37,6 +39,11 @@ let nRightMoves = 0            //couts pairs of cards that the player found so w
 
 let nMoves = document.querySelector(".n-moves") //selects paragraph that represents the score of the player so we can update it
 let allCards = document.querySelectorAll(".card") //selects all cards
+
+if(allCards.length != listIcons.length){
+    alert("Error : number of icons doesn't correspond to number of cards")
+    throw new Error("number of icons doesn't correspond to number of cards")
+}
 allCards.forEach((cardSelected,index) => 
 {
     cardSelected.addEventListener("click",(event) => //action when player clicks on a card

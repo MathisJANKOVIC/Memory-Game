@@ -1,4 +1,4 @@
-export function setCookie(name,value,expirationDay) 
+export function setCookie(name,value,expirationDay = 30) 
 {
     var date = new Date()
     var currentTime = date.getTime()
@@ -18,9 +18,9 @@ export function getCookie(name)
     for(var i = 0 ; i < cookies.length ; i++) 
     {
         var cookie = cookies[i]
-        while(cookie.charAt(0) == " ") //suppress spaces
+        while(cookie.charAt(0) == " ") //removes spaces
         {
-            cookie = cookie.substring(1)
+            cookie = cookie.substring(1) 
         }
         if(cookie.indexOf(name) == 0) //if starts with the noun of cookie researched
         {

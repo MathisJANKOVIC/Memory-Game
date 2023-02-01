@@ -6,8 +6,7 @@ CREATE TABLE IF NOT EXISTS highscore (
   player varchar(30) NOT NULL,
   score int DEFAULT NULL,
   date timestamp DEFAULT CURRENT_TIMESTAMP
-)
-
+);
 
 INSERT INTO highscore(player, score, date) VALUES
 ('Mathis', 33, '2023-01-19 18:10:07'),
