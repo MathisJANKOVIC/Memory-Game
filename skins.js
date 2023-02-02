@@ -1,25 +1,34 @@
 import {getCookie,setCookie} from "./cookies_functions.js";
-let iconTheme = getCookie("icon-theme");
+const iconTheme = getCookie("icon-theme");
 
-if(iconTheme !== null) //if the iconTheme exists
+let allOptions = document.querySelectorAll(".card")
+let lastSelectedOption = null
+if(iconTheme === null)
 {
-    var radioButton = document.querySelector('input[value="' + iconTheme + '"]'); //selects the input radio which has cookie as value
-    if(radioButton){
-        radioButton.checked = true;
-    }
+    var defaultSkin = document.querySelector(".emojis") //default theme
+    defaultSkin.style.backgroundColor = "green" 
+    lastSelectedOption = defaultSkin
 }
-else //if the cookie doesn't exist
+for(const selectedOption of allOptions)
 {
-    var radioButton = document.querySelector('input[value="shapes"]'); //selects the input radio which has "shapes" as value (default value)
-    if(radioButton){
-        radioButton.checked = true;
+    
+    if(selectedOption.classList[1] == iconTheme)
+    {
+        var a = document.querySelector("." + selectedOption.classList[1])
+        console.log(a)
+        a.style.backgroundColor = "green" 
+        lastSelectedOption = a
     }
-}
+    selectedOption.addEventListener("click",(event) => //action when player clicks on a card
+    {
 
-const allRadioButton = document.querySelectorAll('input[type=radio]');
-for(const radioButton of allRadioButton) 
-{
-    radioButton.addEventListener('change', (event) => { //whenever the button radio check changes 
-        setCookie("icon-theme",event.target.value)  //modifies the cookie with radio button value
+        event.target.style.backgroundColor = "green" 
+        if(lastSelectedOption != null)
+        {
+            lastSelectedOption.style.backgroundColor = "rgb(207, 66, 23)"
+        }
+        lastSelectedOption = selectedOption
+        setCookie("icon-theme",selectedOption.classList[1])
+                      
     })
 }

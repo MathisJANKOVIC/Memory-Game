@@ -20,7 +20,7 @@ async function initImport() //use of async function and "await" to await the pro
 
 let iconTheme = getCookie("icon-theme")
 if(iconTheme === null){ //if the cookie doesn't exist
-    iconTheme = "shapes"
+    iconTheme = "emojis" //use default theme
 }
 let listIcons = await initImport()
 
@@ -44,38 +44,38 @@ if(allCards.length != listIcons.length){
     alert("Error : number of icons doesn't correspond to number of cards")
     throw new Error("number of icons doesn't correspond to number of cards")
 }
-allCards.forEach((cardSelected,index) => 
+allCards.forEach((selectedCard,index) => 
 {
-    cardSelected.addEventListener("click",(event) => //action when player clicks on a card
+    selectedCard.addEventListener("click",(event) => //action when player clicks on a card
     {
-        if(cardSelected.innerHTML == "" && isAnimationInProgress == false) //allow to flip the card only if it's hidden and there is no animation in progress
+        if(selectedCard.innerHTML == "" && isAnimationInProgress == false) //allow to flip the card only if it's hidden and there is no animation in progress
         {            
-            event.target.style.transform = "rotateY(180deg)" //flips the card selected
+            event.target.style.transform = "rotateY(0)" //flips the card selected
             isAnimationInProgress = true //animation starts
             
             setTimeout((function(){
                 
                 //gives to the card an icon and another color  
-                cardSelected.innerHTML = listIcons[index] 
+                selectedCard.innerHTML = listIcons[index] 
                 event.target.style.backgroundColor = shownColor
 
                 if(alreadySelectedCard == false)
                 {                    
-                    firstSelectedCard = cardSelected
+                    firstSelectedCard = selectedCard
                     alreadySelectedCard = true
                     isAnimationInProgress = false //there is no animation so the player can quickly select another card
                 }
                 else //if there already one card selected
                 {                
                     nMoves.innerHTML++ //update the number of moves printed on the screen
-                    if(cardSelected.innerHTML != firstSelectedCard.innerHTML) //if icons don't correspond
+                    if(selectedCard.innerHTML != firstSelectedCard.innerHTML) //if icons don't correspond
                     {
                         setTimeout(() => 
                         {
-                            event.target.style.transform = firstSelectedCard.style.transform = "rotateY(0deg)" //flips back to initial position 
+                            event.target.style.transform = firstSelectedCard.style.transform = "rotateY(180deg)" //flips back to initial position 
                             setTimeout((function(){                      
                                 event.target.style.backgroundColor = firstSelectedCard.style.backgroundColor = defaultColor //back cards to initial color
-                                cardSelected.innerHTML = firstSelectedCard.innerHTML = "" //"hides" cards icons  
+                                selectedCard.innerHTML = firstSelectedCard.innerHTML = "" //"hides" cards icons  
                                 isAnimationInProgress = false //animation ends     
                             }),100) //flip animation time
                         }, reflexionTime);           

@@ -9,6 +9,100 @@ html
 
 body
 {
+    font-size: 20px;
     text-align: center;
     background:linear-gradient(to left,rgb(203, 23, 23),rgb(1, 44, 135));
+}
+
+body h1{
+    margin-bottom: 40px; 
+    text-shadow: 2px 2px 5px rgb(145, 48, 18);
+    color: rgb(0, 8, 63);
+}
+
+body .line-container
+{
+    display: flex;
+    justify-content:center;
+}
+
+body .line-container .card
+{   
+    background-color: rgb(207, 66, 23);
+    display: flex;
+    
+    margin: 9px 15px;   
+    width: 220px;
+    height: 190px;
+
+    border: 1px solid black;   
+    border-radius: 10px;
+
+    /*icons style*/    
+    align-items: center;    
+    cursor: pointer;   
+}
+.emojis
+{
+    font-size: 72px;
+    letter-spacing: -38px;
+}
+
+.dishes
+{
+    font-size: 72px;
+    letter-spacing: -38px;
+}
+
+.fruits
+{
+    font-size: 73px;
+    letter-spacing: -33px;
+}
+
+.candies{
+    font-size: 73px;
+    letter-spacing: -35px;
+}
+
+.nature{
+    font-size: 74px;
+    letter-spacing: -33px;
+}
+
+.animals{
+    font-size: 73px;
+    letter-spacing: -34px;
+}
+
+.elements{
+    font-size: 75px;
+    letter-spacing: -25px;
+}
+
+.shapes{
+    font-size: 73px;
+    letter-spacing: -41px;
+}
+
+.vegetables
+{
+    font-size: 73px;
+    letter-spacing: -39px;
+}
+
+.countrySide
+{
+    font-size: 70px;
+    letter-spacing: -35px;
+}
+
+.food{
+    font-size: 73px;
+    letter-spacing: -36px;
+}
+
+.space{
+    font-size: 73px;
+    letter-spacing: -38px;
 }
