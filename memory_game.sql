@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `highscore` (
   `player` varchar(40) NOT NULL,
   `score` int(9) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
 
 --
 -- Déchargement des données de la table `highscore`
@@ -57,9 +57,4 @@ INSERT INTO `highscore` (`player`, `score`, `date`) VALUES
 ('Adahe', 23, '2023-01-23 09:46:10'),
 ('Coop', 16, '2023-01-23 09:47:24'),
 ('Coop', 15, '2023-01-23 09:48:31'),
-('Coop', 16, '2023-01-23 09:49:37'),
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+('Coop', 16, '2023-01-23 09:49:37');
