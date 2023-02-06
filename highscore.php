@@ -1,5 +1,5 @@
 <?php
-    $id = mysqli_connect("localhost:3306","root","","matching_game") ; //connexion infos
+    $id = mysqli_connect("localhost:3306","root","","memory_game") ; //connexion infos
     date_default_timezone_set('Europe/Paris'); //enter your timezone
     
     if(mysqli_connect_errno()){
@@ -57,8 +57,6 @@
     <h1>Meilleurs Scores</h1>
     
     <?php
-        echo($last_query_sec_elapsed." sec");
-
         $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from highscore ORDER BY score ASC limit 10" ;
         $result = mysqli_query($id,$select_query) ;
         $i = 1 ; //to print the rang of the player based on his score
@@ -92,14 +90,22 @@
             </table>"
         );
 
-        if(isset($_GET["player"])) //if the user clicked on "cancel" button or entered authorised characters on last page
+        if(isset($_GET["player"])) //if the user acces the page after finishing a game
         {
             echo
             ("
                 <div class='button' onclick=\"window.location.href='game.html'\">Nouvelle Partie</div>
                 <div class='button' onclick=\"window.location.href='index.html'\">Menu Principal</div>
             ");
+        }
+        else{ //if the user acces the page with main menu
+            echo("
+                <div class='button' onclick=\"window.location.href='index.html'\">Retour</div>
+            ");
         }        
     ?>
+
+    <!-- <li></li> = 1 square (must edit with CSS each li) -->
+    <ul class="background"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul> 
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,7 @@
 <body>
     <h1>Choisissez un thème d'icone pour vos cartes</h1>
 
+    <!-- secon class of cards must correspond to icon constants name in "icon.js" -->
     <div class="line-container">
         <div class="card emojis">😎😍😂</div>
         <div class="card fruits">🍒🍊🍏</div>
@@ -18,16 +19,18 @@
                
     </div>
     <div class="line-container">
-        <div class="card animals">🦎🐣🐳</div>
+        <div class="card food">🍝🍹🍨</div>       
         <div class="card nature">🌳🍂🌼</div>
-        <div class="card countrySide">🌁🏜️🏞️</div>
-        
-        
+        <div class="card countrySide">🌁🏜️🏞️</div>       
     </div>
     <div class="line-container">     
-        <div class="card food">🍝🍹🍨</div>
+        <div class="card animals">🦎🐣🐳</div>
         <div class="card elements">🔥🌪️❄️</div>
         <div class="card space">☀️🌎🌌</div>
     </div>
+    <div class="button" onclick="window.location.href='index.html'">OK</div>
+
+    <!-- <li></li> = 1 square (must edit with CSS each li) -->
+    <ul class="background"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul> 
 </body>
 </html>

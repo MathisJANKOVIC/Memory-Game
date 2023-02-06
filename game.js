@@ -1,7 +1,8 @@
 import {getCookie} from "./cookies_functions.js"
 
-const defaultColor = "rgb(145, 48, 18)" //color of hidden card (from CSS)
-const shownColor = "rgb(207, 66, 23)"  //color it changes to when card is shown
+const hiddenCardColor = "rgb(129 34 12)" //color of hidden card (from CSS)
+const shownCardColor = "rgb(190 44 0)"  //color it changes to when card is shown
+const defaultTheme = "emojis"          //default icon theme in case user didn't change it in skin page
 const reflexionTime = 500 //ms        //time to let to the player to see what he discovered
 
 async function initImport() //use of async function and "await" to await the program to load data before executing the rest of code
@@ -20,7 +21,7 @@ async function initImport() //use of async function and "await" to await the pro
 
 let iconTheme = getCookie("icon-theme")
 if(iconTheme === null){ //if the cookie doesn't exist
-    iconTheme = "emojis" //use default theme
+    iconTheme = defaultTheme //use default theme
 }
 let listIcons = await initImport()
 
@@ -57,7 +58,7 @@ allCards.forEach((selectedCard,index) =>
                 
                 //gives to the card an icon and another color  
                 selectedCard.innerHTML = listIcons[index] 
-                event.target.style.backgroundColor = shownColor
+                event.target.style.backgroundColor = shownCardColor
 
                 if(alreadySelectedCard == false)
                 {                    
@@ -74,7 +75,7 @@ allCards.forEach((selectedCard,index) =>
                         {
                             event.target.style.transform = firstSelectedCard.style.transform = "rotateY(180deg)" //flips back to initial position 
                             setTimeout((function(){                      
-                                event.target.style.backgroundColor = firstSelectedCard.style.backgroundColor = defaultColor //back cards to initial color
+                                event.target.style.backgroundColor = firstSelectedCard.style.backgroundColor = hiddenCardColor //back cards to initial color
                                 selectedCard.innerHTML = firstSelectedCard.innerHTML = "" //"hides" cards icons  
                                 isAnimationInProgress = false //animation ends     
                             }),100) //flip animation time
