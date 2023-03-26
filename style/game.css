@@ -45,6 +45,7 @@ html
 body h1
 {
     font-size: 3.2rem;
+    margin-top: -0.1rem;
     margin-bottom: 1px;
     text-shadow: -0.3125rem 0 var(--h1-border-color), 0 0.3125rem var(--h1-border-color), 0.3125rem 0 var(--h1-border-color), 0 -0.3125rem var(--h1-border-color); /*letters border*/
     color: var(--h1-color);

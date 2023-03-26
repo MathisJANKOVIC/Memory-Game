@@ -9,29 +9,29 @@ let lastSelectedOption = null       //saves selected option so we can change it 
 if(iconTheme === null) //if the cookie doesn't exist
 {
     var defaultOption = document.querySelector("." + defaultTheme) //selects class of default theme
-    defaultOption.style.backgroundColor = selectionColor  
+    defaultOption.style.backgroundColor = selectionColor
     lastSelectedOption = defaultOption
 }
 
 let allOptions = document.querySelectorAll(".card")
 for(const option of allOptions)
-{   
+{
     //selected options has 2 classes: "card" and [icon-theme] so we use the second
     if(option.classList[1] == iconTheme) //if selectedOption's second class matches with cookie value
     {
         var selectedOption = document.querySelector("." + option.classList[1]) //selects option which has the cookie as it class
-        selectedOption.style.backgroundColor = selectionColor 
-        lastSelectedOption = selectedOption 
+        selectedOption.style.backgroundColor = selectionColor
+        lastSelectedOption = selectedOption
     }
     option.addEventListener("click",(event) => //action when player clicks on a card
     {
         if(event.target.style.backgroundColor != selectionColor) //don't act if user clicks on the option already selected
         {
-            event.target.style.backgroundColor = selectionColor 
+            event.target.style.backgroundColor = selectionColor
             lastSelectedOption.style.backgroundColor = defaultColor
             lastSelectedOption = option
 
             setCookie("icon-theme",option.classList[1])
-        }                   
+        }
     })
 }
