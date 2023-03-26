@@ -1,42 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 fév. 2023 à 18:18
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `matching_game`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `highscore`
---
-
 DROP TABLE IF EXISTS `highscore`;
-CREATE TABLE IF NOT EXISTS `highscore` (
+CREATE TABLE IF NOT EXISTS `highscore`
+(
   `player` varchar(40) NOT NULL,
   `score` int(9) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 );
-
---
--- Déchargement des données de la table `highscore`
---
 
 INSERT INTO `highscore` (`player`, `score`, `date`) VALUES
 ('Mathis', 33, '2023-01-19 17:10:07'),

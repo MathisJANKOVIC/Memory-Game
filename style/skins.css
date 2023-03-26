@@ -1,15 +1,12 @@
 html
 {
     height: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-}
-
-body{
-    text-align: center;
 }
 
 :root{
@@ -19,20 +16,21 @@ body{
 
   --h1-color: rgb(190, 44, 0);
   --card-color:rgb(190, 44, 0);
-  --h1-border-color: rgb(0, 0, 50);  
+  --h1-border-color: rgb(0, 0, 50);
 
   --button-text-color: rgb(0, 0, 55);
   --button-background-color:rgba(144, 34, 0, 0.9);
   --button-border-color:rgb(0, 0, 50);
   --button-hover-color: rgba(64, 86, 150, 0.9);
-}  
+}
 
-body h1{
+body h1
+{
     text-shadow: -0.3125rem 0 var(--h1-border-color), 0 0.3125rem var(--h1-border-color), 0.3125rem 0 var(--h1-border-color), 0 -0.3125rem var(--h1-border-color); /*letters border*/
     color: var(--h1-color);
     font-size: 2.8rem;
-    margin-bottom: 2rem; 
-    margin-top: 10rem;  
+    margin-bottom: 2.4rem;
+    margin-top: 10rem;
 }
 
 body .line-container
@@ -42,39 +40,40 @@ body .line-container
 }
 
 body .line-container .card
-{   
+{
     background-color: var(--card-color);
     display: flex;
-    
-    margin: 0.5625rem 0.9375rem;   
+
+    margin: 0.5625rem 0.9375rem;
     width: 13.75rem;
     height: 11.875rem;
 
-    border: 1px solid black;   
+    border: 1px solid black;
+    box-shadow: 0.062rem 0.062rem 0.062rem 0.031rem;
     border-radius: 10px;
 
-    /*icons style*/    
-    align-items: center;    
-    cursor: pointer;   
+    align-items: center;
+    cursor: pointer;
 }
 
 body .button
-{  
+{
     font-size: 2.5rem;
     color: var(--button-text-color);
     background: var(--button-background-color);
-     
+
     margin: 3rem auto;
     width: 21.5rem;
 
     padding-top: 0.655rem;
     padding-bottom: 0.655rem;
 
-    text-align: center; 
-    cursor: pointer;  
+    text-align: center;
+    cursor: pointer;
 
     border: 0.11875rem solid var(--button-border-color);
-    border-radius: 10px;    
+    border-radius: 10px;
+    box-shadow: 0.04rem 0.04rem;
 }
 body .button:hover{
     background-color: var(--button-hover-color);
@@ -136,7 +135,7 @@ body .button:hover{
     letter-spacing: -2.375rem;
 }
 
-.background 
+.background
 {
     z-index: -1;
     position: fixed;
@@ -150,7 +149,7 @@ body .button:hover{
     overflow: hidden;
 }
 .background li /*all background squares*/
-{   
+{
     position: absolute;
     display: block;
     list-style: none;
@@ -160,7 +159,7 @@ body .button:hover{
 }
 
 @keyframes animate /*background squares animation*/
-{ 
+{
     0%{
         transform: translateY(0) rotate(0deg);
         opacity: 1;
@@ -175,18 +174,18 @@ body .button:hover{
 
 /*each background square edition*/
 .background li:nth-child(1)
-{ 
+{
     /*position*/
-    left: 25%; 
+    left: 25%;
     bottom: -130px;
 
     /*shape*/
     width: 8.125rem;
     height: 8.125rem;
-    
-    animation-delay: 1s; /*time appearence*/   
+
+    animation-delay: 1s; /*time appearence*/
     background: var(--background-square-color1);
-    
+
 }
 .background li:nth-child(2)
 {
@@ -205,7 +204,7 @@ body .button:hover{
     height: 10.875rem;
     bottom: -174px;
     animation-delay: 1s;
-    background: var(--background-square-color1);    
+    background: var(--background-square-color1);
 }
 .background li:nth-child(4)
 {
@@ -235,7 +234,7 @@ body .button:hover{
     background: var(--background-square-color1);
 }
 .background li:nth-child(7)
-{ 
+{
     left: 3%;
     width: 10.5rem;
     height: 10.5rem;

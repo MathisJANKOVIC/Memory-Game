@@ -1,11 +1,12 @@
 html
-{   
+{
     height: 100%;
     height: 100vh;
-    
-    display: grid;
-    place-items: center;
-    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-size: 16px;
@@ -13,7 +14,7 @@ html
 
 
 :root /*color constants*/
-{ 
+{
   --background-color: rgb(0, 30, 115);
   --background-square-color1: rgba(144, 34, 0, 0.99);
   --background-square-color2: rgba(255, 255, 255, 0.2);
@@ -30,11 +31,10 @@ html
 }
 body h1
 {
-    margin-top: 5.5rem;
+    margin-top: 6rem;
     font-size: 4.3rem;
     color: var(--h1-color);
     text-shadow: -0.3125rem 0 var(--h1-border-color), 0 0.3125rem var(--h1-border-color), 0.3125rem 0 var(--h1-border-color), 0 -0.3125rem var(--h1-border-color); /*letters border*/
-    /* margin-top: 100px; */
 }
 
 body table
@@ -42,14 +42,13 @@ body table
     color: var(--table-color);
     font-size: 2.2rem;
     min-width: 62.5rem;
-    width: auto;  
+    width: auto;
 
     margin-top: 3.125rem;
-    /* margin-bottom: 5rem; */
 
     padding-bottom: 3.125rem;
     margin-bottom: 3rem;
-    border-collapse: collapse;    
+    border-collapse: collapse;
 }
 
 body thead tr th{
@@ -61,24 +60,30 @@ body tbody tr td{
 }
 
 body .button
-{  
+{
     font-size: 2.5rem;
     color: var(--button-text-color);
     background: var(--button-background-color);
+
     margin-left: auto;
     margin-right: auto;
-    
+
     margin-bottom: 1.5rem;
     width: 24rem;
 
     padding-top: 0.655rem;
     padding-bottom: 0.655rem;
 
-    text-align: center; 
-    cursor: pointer;  
+    text-align: center;
+    cursor: pointer;
 
     border: 0.11875rem solid var(--button-border-color);
-    border-radius: 10px;    
+    border-radius: 10px;
+    box-shadow: 0.04rem 0.04rem;
+}
+
+body .button.first-button {
+    margin-top: 4rem;
 }
 
 body .button:hover{
@@ -119,7 +124,7 @@ body .button:hover{
     overflow: hidden;
 }
 .background li /*all background squares*/
-{   
+{
     position: absolute;
     display: block;
     list-style: none;
@@ -129,7 +134,7 @@ body .button:hover{
 }
 
 @keyframes animate /*background squares animation*/
-{ 
+{
     0%{
         transform: translateY(0) rotate(0deg);
         opacity: 1;
@@ -144,18 +149,18 @@ body .button:hover{
 
 /*each background square edition*/
 .background li:nth-child(1)
-{ 
+{
     /*position*/
-    left: 25%; 
+    left: 25%;
     bottom: -130px;
 
     /*shape*/
     width: 8.125rem;
     height: 8.125rem;
-    
-    animation-delay: 1s; /*time appearence*/   
+
+    animation-delay: 1s; /*time appearence*/
     background: var(--background-square-color1);
-    
+
 }
 .background li:nth-child(2)
 {
@@ -174,7 +179,7 @@ body .button:hover{
     height: 10.875rem;
     bottom: -174px;
     animation-delay: 1s;
-    background: var(--background-square-color1);    
+    background: var(--background-square-color1);
 }
 .background li:nth-child(4)
 {
@@ -204,7 +209,7 @@ body .button:hover{
     background: var(--background-square-color1);
 }
 .background li:nth-child(7)
-{ 
+{
     left: 3%;
     width: 10.5rem;
     height: 10.5rem;
