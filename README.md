@@ -5,8 +5,8 @@ Memory Game is a video game on browser. The game consists of pairs of cards with
 The game ends when all pairs of cards have been discovered and are displayed visible faces. The goal is to win in as few moves as possible in order to be the highest ranked.
 
 ## Requirements
-    - Git
-    - Local server
+- Git
+- Local server
 
 ## Instalation
     1. Clone the project
