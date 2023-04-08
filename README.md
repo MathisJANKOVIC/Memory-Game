@@ -9,8 +9,6 @@ The game ends when all pairs of cards have been discovered and are displayed vis
     - Local server
 
 ## Instalation
-
-
     1. Clone the project
     2. Run your local server
     3. Import memory_game.sql on your server
