@@ -7,12 +7,19 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $data = json_decode(file_get_contents("php://input"), true);
+        $data = json_decode(file_get_contents("php://input"), true); //get data in body of request
 
         $player = $data["player"];
         $score = $data["score"];
 
-        mysqli_query($id, "INSERT INTO highscore(player,score) VALUES('$player',$score)");
+        $highscore = mysqli_query($id, "SELECT * FROM highscore ORDER BY score ASC LIMIT 10");
+
+        mysqli_data_seek($highscore,9); //acces to tenth row of the query
+        $tenth_row = mysqli_fetch_assoc($highscore);
+
+        if($score <= $tenth_row["score"]){ //save score only if it is in the top 10
+            mysqli_query($id, "INSERT INTO highscore(player,score) VALUES('$player',$score)");
+        }
     }
     else if($_SERVER["REQUEST_METHOD"] == "GET")
     {
@@ -30,7 +37,7 @@
                 <h1>Meilleurs Scores</h1>
 
                 <?php
-                    $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') from highscore ORDER BY score ASC limit 10" ;
+                    $select_query = "SELECT player,score,DATE_FORMAT(date, '%d-%m-%Y %H:%i') FROM highscore ORDER BY score ASC LIMIT 10" ;
                     $res = mysqli_query($id,$select_query) ;
                     $i = 1 ; //to print the rang of the player based on his score
                 ?>
@@ -49,7 +56,7 @@
                             <td><?=$i?></td>
                             <td><?=$highscore["player"]?></td>
                             <td><?=$highscore["score"]?></td>
-                            <td><?=$highscore["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]?></td>
+                            <td><?=$highscore["DATE_FORMAT(date,'%d-%m-%Y %H:%i')"]?></td>
                         </tr> <?php $i = $i + 1 ; } ?>
                     </tbody>
                 </table>
@@ -62,7 +69,7 @@
                             <div class='button' onclick="window.location.href='index.html'">Menu Principal</div>
                         <?php
                     }
-                    else //if the user comes from main menu
+                    else //if the user comes from title screen
                     {
                         ?><div class='button first-button' onclick="window.location.href='index.html'">Retour</div> <?php
                     }
