@@ -56,7 +56,7 @@
                             <td><?=$i?></td>
                             <td><?=$highscore["player"]?></td>
                             <td><?=$highscore["score"]?></td>
-                            <td><?=$highscore["DATE_FORMAT(date,'%d-%m-%Y %H:%i')"]?></td>
+                            <td><?=$highscore["DATE_FORMAT(date, '%d-%m-%Y %H:%i')"]?></td>
                         </tr> <?php $i = $i + 1 ; } ?>
                     </tbody>
                 </table>
