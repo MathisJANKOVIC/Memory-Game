@@ -94,15 +94,16 @@ allCards.forEach((selectedCard,index) =>
 
                                 if(player !== null)
                                 {
-                                    //encryption of data and send to PHP highscore page using get method
-                                    var encryptedPlayer = btoa(player)
-                                    var encryptedScore = btoa(nMoves.innerHTML)
-                                    window.location.replace(`highscore.php?player=${encryptedPlayer}&score=${encryptedScore}`)
+                                    var score_save = {"player" : player, "score" : nMoves.innerHTML}
+
+                                    fetch("highscore.php", {
+                                        method: "POST",
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify(score_save)
+                                    })
                                 }
-                                else //if the user clicked on "cancel" button
-                                {
-                                    window.location.replace(`highscore.php?player=null`)
-                                }
+                                window.location.replace("highscore.php?game=true")
+
                             }),reflexionTime)
                         }
                     }
