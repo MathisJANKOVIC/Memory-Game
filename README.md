@@ -5,11 +5,11 @@ Memory Game is a video game on browser. The game consists of pairs of cards with
 The game ends when all pairs of cards have been discovered and are displayed visible faces. The goal is to win in as few moves as possible in order to be the highest ranked.
 
 ## Requirements
-- Git
+- Git (optionnal)
 - Local server
 
 ## Configuration
-    1. Clone the project
+    1. Download and extract the zip or clone the project on your local server dir
     2. Run your local server
     3. Import database.sql on your server
     4. Adjust connexion info in highscore.php line 2
