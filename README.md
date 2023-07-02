@@ -6,10 +6,10 @@ The game ends when all pairs of cards have been discovered and are displayed vis
 
 ## Requirements
 - Git (optionnal)
-- Local server
+- Local server with Apache PHP and MySQL
 
 ## Configuration
-    1. Download and extract the zip or clone the project on your local server dir
+    1. Download and extract the zip or clone the project on your local server directory
     2. Run your local server
     3. Import database.sql on your server
     4. Adjust connexion info in highscore.php line 2
