@@ -1,4 +1,4 @@
-import {getCookie} from "./cookies_functions.js"
+import { getCookie } from "./cookies_functions.js"
 
 const hiddenCardColor = "rgb(129 34 12)" //⚠ color of hidden card (from CSS)
 const shownCardColor = "rgb(190 44 0)"  //color it changes to when card is shown
@@ -23,6 +23,7 @@ let iconTheme = getCookie("icon-theme")
 if(iconTheme === null){ //if the cookie doesn't exist
     iconTheme = defaultTheme //use default theme
 }
+
 let listIcons = await initImport()
 
 listIcons = [].concat(listIcons,listIcons) //duplication of listIcons to make pairs

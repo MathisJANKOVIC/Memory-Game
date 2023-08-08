@@ -7,17 +7,17 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $data = json_decode(file_get_contents("php://input"), true); //get data in body of request
+        $data = json_decode(file_get_contents("php://input"), true); //get data from body
 
         $player = $data["player"];
         $score = $data["score"];
 
         $highscore = mysqli_query($id, "SELECT * FROM highscore ORDER BY score ASC LIMIT 10");
 
-        mysqli_data_seek($highscore,9); //acces to tenth row of the query
+        mysqli_data_seek($highscore,9); //access to tenth row of the query
         $tenth_row = mysqli_fetch_assoc($highscore);
 
-        if($score <= $tenth_row["score"]){ //save score only if it is in the top 10
+        if($score <= $tenth_row["score"]){ //saves score only if it is in the top 10
             mysqli_query($id, "INSERT INTO highscore(player,score) VALUES('$player',$score)");
         }
     }
