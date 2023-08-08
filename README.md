@@ -7,7 +7,7 @@ The game ends when all pairs of cards have been discovered and are displayed vis
 ![game screen](/screen_game.png)
 
 ## Requirements
-- Apache
+- Apache Server
 - PHP
 - MySQL or MariaDB
 

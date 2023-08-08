@@ -43,7 +43,7 @@ if(allCards.length != listIcons.length){
 }
 allCards.forEach((selectedCard,index) =>
 {
-    selectedCard.addEventListener("click",(event) => //action when player clicks on a card
+    selectedCard.addEventListener("click", (event) => //action when player clicks on a card
     {
         if(selectedCard.innerHTML == "" && isAnimationInProgress == false) //allow to flip the card only if it's hidden and there is no animation in progress
         {
@@ -103,9 +103,9 @@ allCards.forEach((selectedCard,index) =>
                                         body: JSON.stringify(score_save)
                                     })
                                 }
-                                window.location.replace("highscore.php?game=true")
+                                window.location.replace("highscore.php?from-game=true")
 
-                            }),reflexionTime)
+                            }), reflexionTime)
                         }
                     }
                     alreadySelectedCard = false

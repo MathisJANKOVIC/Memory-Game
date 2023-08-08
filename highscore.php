@@ -62,7 +62,7 @@
                 </table>
 
                 <?php
-                    if(isset($_GET["game"])) //if the user comes from a game
+                    if(isset($_GET["from-game"])) //if the user comes from a game
                     {
                         ?>
                             <div class='button first-button' onclick="window.location.href='game.html'">Nouvelle Partie</div>
