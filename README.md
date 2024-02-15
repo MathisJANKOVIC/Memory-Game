@@ -12,7 +12,8 @@ The game ends when all pairs of cards have been discovered and are displayed vis
 - MySQL or MariaDB
 
 ## Installation
-- Clone the project
-- Run your Apache server
-- Import `database.sql` on your server
--  Adjust connexion info in `highscore.php` line 2
+1. Download and extract the zip or clone the project
+2. Move the project into your virtual host directory
+2. Run your Apache server
+3. Import `database.sql` in phpMyAdmin
+4. Adjust connexion info in `highscore.php` line 2
